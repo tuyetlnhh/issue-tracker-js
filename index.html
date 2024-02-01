@@ -34,7 +34,7 @@
       </div>
 
       <div class="controler-btn text-end">
-        <button type="submit" class="btn btn-primary btn-add" id="issue-add" >Add</button>
+        <button type="submit" class="btn btn-primary btn-add" id="issue-add">Add</button>
       </div>
     </form>
     <div class="main-feature mt-5 border-top border-dark-subtle">
@@ -50,9 +50,11 @@
       <div class="main-freature-group d-flex flex-row justify-content-start align-items-center">
         <label for="feature" class="form-label fw-normal">Filter:</label>
         <div class="feature ms-5">
-          <button class="btn btn-primary btn-add" id="All">All</button>
-          <button class="btn btn-primary btn-success" id="Open">Open</button>
-          <button class="btn btn-primary btn-dark" id="Close">Close</button>
+          <button type="button" onclick="filterByStatus('All')" class="btn btn-primary btn-add" id="All">All</button>
+          <button type="button" onclick="filterByStatus('Open')" class="btn btn-primary btn-success"
+            id="Open">Open</button>
+          <button type="button" onclick="filterByStatus('Closed')" class="btn btn-primary btn-dark"
+            id="Close">Close</button>
 
         </div>
       </div>
@@ -60,45 +62,15 @@
         <label for="order" class="form-label fw-normal">Order by:</label>
         <div class="feature ms-5">
           <select name="order" id="order" class="form-control form-select">
+            <option value="Default">Default</option>
             <option value="ASC">ASC</option>
             <option value="DESC">DESC</option>
           </select>
         </div>
       </div>
       <div id="issues-list"></div>
-      <!-- <section id="list-issues" class="mt-3 mb-3">
-        <div class="issues-detail border border-dark-subtle">
-          <div class="id-status d-flex ps-2 p-1 bg-secondary-subtle border-bottom border-dark-subtle ">
-            <p class="p-1" id="issue-id">1</p>
-            <p class="fw-bold rounded-3 bg-secondary ms-2 text-white p-1" id="issue-status">new</p>
-          </div>
-          <div class="description ps-2 p-1">
-            <h4 class="fw-bold text-danger" id="issue-severity">low</h4>
-            <h3>delectus aut autem</h3>
-          </div>
-          <div class="status-group d-flex flex-row justify-content-end align-items-center">
-            <div class="status m-4">
-              <button class="btn btn-primary btn-dark" id="Close">Close</button>
-              <button class="btn btn-primary btn-danger" id="Delete">Delete</button>
-
-            </div>
-          </div>
-      </section> -->
     </div>
     <script src="./assets/js/main.js"></script>
 </body>
 
 </html>
-
-
-<!-- 
- - desktop first
-     - code layout tren desktop
-     - responsive on mobile
-        - media (max-width) 
-        
- - mobile first
-    - code layout tren mobile
-    - responsive on desktop
-        - media (min-width) 
--->
