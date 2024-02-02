@@ -2,7 +2,8 @@ const formSubmit = document.getElementById("issue-form");
 const issuesList = document.getElementById('issues-list');
 let issues = JSON.parse(localStorage.getItem('issues')) || [];
 formSubmit.addEventListener("submit", handleAddTodo);
-// luu data
+
+// Add data
 function handleAddTodo(event) {
   event.preventDefault();
   const description = document.getElementById("issue-description").value;
@@ -54,8 +55,18 @@ function filterByStatus(status) {
     return;
   }
   const filteredIssues = issues.filter(issue => issue.status == status);
-  console.log('filteredIssues: ', filteredIssues);
   fetchIssues(filteredIssues);
+}
+
+//Search by keyword
+const searchForm = document.getElementById('search-key');
+searchForm.addEventListener("input", searchIssues);
+function searchIssues(e) {
+  const query = e.target.value;
+  console.log('query: ', query);
+  const res = issues.filter(issue => issue.description.toLowerCase().includes(query.toLowerCase()));
+  fetchIssues(res);
+  console.log('res: ', res);
 }
 
 // fetch data pure function
@@ -93,4 +104,5 @@ function fetchIssues(data) {
     </div> `;
   }
 }
+console.log('issues: ', issues)
 fetchIssues(issues); 
