@@ -69,6 +69,36 @@ function searchIssues(e) {
   console.log('res: ', res);
 }
 
+//Order by 
+function sortByPriority (order, data) {
+  const clonedData = JSON.parse(JSON.stringify(data))
+  var prs = ['High', 'Medium', 'Low'];
+  clonedData.sort(function ( a, b ) {
+      var x = prs.indexOf(a.severity);
+      var y = prs.indexOf(b.severity);
+
+      if ( x < y ) return -1 * order;
+      if ( x > y ) return 1 * order;
+      return 0;
+  });
+  return clonedData;
+}
+const selectOrder = document.getElementById('select-order');
+selectOrder.addEventListener("change", orderBy);
+function orderBy(event) {
+  const order = event.target.value;
+  console.log('order: ', order)
+  if (order === 'Default') {
+    fetchIssues(issues);
+    return;
+  }
+  if (order === 'ASC') {
+    fetchIssues(sortByPriority(-1, issues));
+    return;
+  }
+  console.log('Khong vao if')
+  fetchIssues(sortByPriority(1, issues));
+}
 // fetch data pure function
 function fetchIssues(data) {
   if(data.length === 0) {
@@ -104,5 +134,4 @@ function fetchIssues(data) {
     </div> `;
   }
 }
-console.log('issues: ', issues)
 fetchIssues(issues); 
